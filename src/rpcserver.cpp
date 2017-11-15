@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2017 The piex developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -219,10 +219,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop PIVX server.");
+            "\nStop piex server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "PIVX server stopping";
+    return "piex server stopping";
 }
 
 
@@ -299,36 +299,36 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* Pivx features */
-        {"pivx", "masternode", &masternode, true, true, false},
-        {"pivx", "listmasternodes", &listmasternodes, true, true, false},
-        {"pivx", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"pivx", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"pivx", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"pivx", "masternodedebug", &masternodedebug, true, true, false},
-        {"pivx", "startmasternode", &startmasternode, true, true, false},
-        {"pivx", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"pivx", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"pivx", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"pivx", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"pivx", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"pivx", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"pivx", "mnbudget", &mnbudget, true, true, false},
-        {"pivx", "preparebudget", &preparebudget, true, true, false},
-        {"pivx", "submitbudget", &submitbudget, true, true, false},
-        {"pivx", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"pivx", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"pivx", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"pivx", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"pivx", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"pivx", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"pivx", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"pivx", "checkbudgets", &checkbudgets, true, true, false},
-        {"pivx", "mnsync", &mnsync, true, true, false},
-        {"pivx", "spork", &spork, true, true, false},
-        {"pivx", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* piex features */
+        {"piex", "masternode", &masternode, true, true, false},
+        {"piex", "listmasternodes", &listmasternodes, true, true, false},
+        {"piex", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"piex", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"piex", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"piex", "masternodedebug", &masternodedebug, true, true, false},
+        {"piex", "startmasternode", &startmasternode, true, true, false},
+        {"piex", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"piex", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"piex", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"piex", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"piex", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"piex", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"piex", "mnbudget", &mnbudget, true, true, false},
+        {"piex", "preparebudget", &preparebudget, true, true, false},
+        {"piex", "submitbudget", &submitbudget, true, true, false},
+        {"piex", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"piex", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"piex", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"piex", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"piex", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"piex", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"piex", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"piex", "checkbudgets", &checkbudgets, true, true, false},
+        {"piex", "mnsync", &mnsync, true, true, false},
+        {"piex", "spork", &spork, true, true, false},
+        {"piex", "getpoolinfo", &getpoolinfo, true, true, false},
 #ifdef ENABLE_WALLET
-        {"pivx", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
+        {"piex", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
 
         /* Wallet */
         {"wallet", "addmultisigaddress", &addmultisigaddress, true, false, true},
@@ -593,16 +593,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-                                             _("To use pivxd, or the -server option to pivx-qt, you must set an rpcpassword in the configuration file:\n"
+                                             _("To use piexd, or the -server option to piex-qt, you must set an rpcpassword in the configuration file:\n"
                                                "%s\n"
                                                "It is recommended you use the following random password:\n"
-                                               "rpcuser=pivxrpc\n"
+                                               "rpcuser=piexrpc\n"
                                                "rpcpassword=%s\n"
                                                "(you do not need to remember this password)\n"
                                                "The username and password MUST NOT be the same.\n"
                                                "If the file does not exist, create it with owner-readable-only file permissions.\n"
                                                "It is also recommended to set alertnotify so you are notified of problems;\n"
-                                               "for example: alertnotify=echo %%s | mail -s \"PIVX Alert\" admin@foo.com\n"),
+                                               "for example: alertnotify=echo %%s | mail -s \"piex Alert\" admin@foo.com\n"),
                                              GetConfigFile().string(),
                                              EncodeBase58(&rand_pwd[0], &rand_pwd[0] + 32)),
             "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -1053,7 +1053,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> pivx-cli " + methodname + " " + args + "\n";
+    return "> piex-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)
